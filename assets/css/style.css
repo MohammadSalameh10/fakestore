@@ -199,13 +199,14 @@
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.my_modal .img {
-  padding: 100px;
+.my_modal .modal_info {
+  padding: 60px;
   background-color: #fff;
   position: relative;
   border-radius: 5px;
@@ -215,12 +216,24 @@
   width: 400px;
 }
 
+.my_modal span{
+  display: block;
+}
+
+.my_modal button {
+ padding: 10px 20px;
+ border-radius: 5px;
+ color: #fff;
+ border: royalblue solid 1px;
+  background-color: #3b4ce2;
+  cursor: pointer;
+}
 .close-btn,
 .left-btn,
 .right-btn {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  padding: 15px;
   border-radius: 50%;
   cursor: pointer;
 }

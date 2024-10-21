@@ -42,12 +42,13 @@ const displayProducts = async (page = 1) => {
             return `
        <div class="product">
         <img src="${product.thumbnail}" alt="${product.description}" class="images"/>
-        <h3>${product.title}</h3>
-        <span>${product.price}$</span>
+        <h3 class="product_name">${product.title}</h3>
+        <span class="product_price">${product.price}$</span>
        </div>
        `
         }).join('');
         document.querySelector(".products .row").innerHTML = result;
+
         let paginationLink = ``;
         if (page == 1) {
             paginationLink += `<li class="page-item"><button  class="page-link" disabled>&laquo;</button></li>`;
@@ -114,14 +115,22 @@ function modal() {
     const leftBtn = document.querySelector(".left-btn");
     const rightBtn = document.querySelector(".right-btn");
     const images = Array.from(document.querySelectorAll(".images"));
+    const productName=Array.from(document.querySelectorAll(".product_name"));
+    const productPrice=Array.from( document.querySelectorAll(".product_price"));
+    
     let currentIndex = 0;
+
     images.forEach((img) => {
         img.addEventListener("click", (e) => {
             modal.classList.remove("d-none");
             modal.querySelector("img").setAttribute("src", e.target.src);
             currentIndex = images.indexOf(e.target);
+            modal.querySelector(".modal_info h3").textContent=productName[currentIndex].textContent;
+            modal.querySelector(".modal_info span").textContent=productPrice[currentIndex].textContent;
         });
     });
+
+
 
     closeBtn.addEventListener("click", () => {
         modal.classList.add("d-none");
@@ -134,6 +143,8 @@ function modal() {
         }
         const src = images[currentIndex].src;
         modal.querySelector("img").setAttribute("src", src);
+        modal.querySelector(".modal_info h3").textContent=productName[currentIndex].textContent;
+        modal.querySelector(".modal_info span").textContent=productPrice[currentIndex].textContent;
     });
 
     rightBtn.addEventListener("click", () => {
@@ -143,6 +154,8 @@ function modal() {
         }
         const src = images[currentIndex].src;
         modal.querySelector("img").setAttribute("src", src);
+        modal.querySelector(".modal_info h3").textContent=productName[currentIndex].textContent;
+        modal.querySelector(".modal_info span").textContent=productPrice[currentIndex].textContent;
     })
 
     document.addEventListener("keydown", (e) => {
@@ -155,6 +168,8 @@ function modal() {
             }
             const src = images[currentIndex].src;
             modal.querySelector("img").setAttribute("src", src);
+            modal.querySelector(".modal_info h3").textContent=productName[currentIndex].textContent;
+            modal.querySelector(".modal_info span").textContent=productPrice[currentIndex].textContent;
         } else if (e.key === "ArrowRight") {
             currentIndex++;
             if (currentIndex >= images.length) {
@@ -162,6 +177,8 @@ function modal() {
             }
             const src = images[currentIndex].src;
             modal.querySelector("img").setAttribute("src", src);
+            modal.querySelector(".modal_info h3").textContent=productName[currentIndex].textContent;
+            modal.querySelector(".modal_info span").textContent=productPrice[currentIndex].textContent;
         }
 
     });
